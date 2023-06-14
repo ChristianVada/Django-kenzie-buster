@@ -29,3 +29,8 @@ class UserSerializer(serializers.Serializer):
         if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("username already taken.")
         return value
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(max_length=50, write_only=True)
+    password = serializers.CharField(max_length=127, write_only=True)
